@@ -1,0 +1,23 @@
+# Load testing script for the static page
+
+config:
+  # target: "https://main.d2nur7bcunnay3.amplifyapp.com"
+  target: "https://main.dd0av77t5cc4x.amplifyapp.com"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      rampTo: 10
+      name: Warm up phase
+    - duration: 60
+      arrivalRate: 10
+      rampTo: 50
+      name: Ramp up to peak load
+    - duration: 300
+      arrivalRate: 50
+      name: Sustained peak load
+
+scenarios:
+  - name: "Load test static page"
+    flow:
+    - get:
+        url: "/static"
